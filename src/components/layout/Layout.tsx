@@ -1,10 +1,6 @@
-import { BellIcon, TrophyIcon } from "lucide-react";
-import Link from "next/link";
 import React from "react";
-import { Button } from "../ui/button";
 import Header from "./aside/Header";
 import Aside from "./aside/Aside";
-import DrawerTrigger from "../ui/DrawerTrigger";
 import MainHeader from "./MainHeader";
 import NavItems from "./aside/NavItems";
 

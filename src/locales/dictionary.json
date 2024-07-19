@@ -1,0 +1,12 @@
+{
+    "aside": {
+        "header": "Tournament Manager",
+        "nav": {
+            "create_tournament": "Create Tournament",
+            "teams_and_players": "Teams & Players",
+            "match_schedule": "Match Schedule",
+            "leaderboard": "Leaderboard",
+            "settings": "Settings"
+        }
+    }
+}

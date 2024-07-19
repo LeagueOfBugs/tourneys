@@ -6,7 +6,7 @@ import DrawerTrigger from "@/components/ui/DrawerTrigger";
 
 const Header = () => {
   return (
-    <header className="flex h-[60px] items-center border-b bg-muted/40 px-6">
+    <header className="flex h-[60px] items-center bg-muted/40 px-6">
       <Link
         href="#"
         className="flex items-center gap-2 font-semibold"
