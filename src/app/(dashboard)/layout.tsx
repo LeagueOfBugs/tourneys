@@ -1,10 +1,24 @@
 import Layout from "@/components/layout/Layout";
 import React from "react";
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+const layout = ({
+  children,
+  details,
+  schedule,
+}: {
+  children: React.ReactNode;
+  details: React.ReactNode;
+  schedule: React.ReactNode;
+}) => {
   return (
     <div>
-      <Layout>{children}</Layout>
+      <Layout>
+        <div className="grid grid-cols-2 grid-rows-[min-content_1fr] gap-2 p-5">
+          {/* {children} */}
+          {details}
+          {schedule}
+        </div>
+      </Layout>
     </div>
   );
 };
