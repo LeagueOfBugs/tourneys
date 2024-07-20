@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "./aside/Header";
-import Aside from "./aside/Aside";
-import MainHeader from "./MainHeader";
-import NavItems from "./aside/NavItems";
+import Header from "../aside/AsideHeader";
+import Aside from "../aside/Aside";
+import MainHeader from "../ui/MainHeader";
+import NavItems from "../aside/AsideNavItems";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (

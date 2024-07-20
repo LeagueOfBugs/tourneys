@@ -1,10 +1,10 @@
 import React from "react";
-import { Button } from "../../ui/button";
+import { Button } from "../ui/button";
 import Link from "next/link";
 import { BellIcon, TrophyIcon } from "lucide-react";
 import DrawerTrigger from "@/components/ui/DrawerTrigger";
 
-const Header = () => {
+const AsideHeader = () => {
   return (
     <header className="flex h-[60px] items-center bg-muted/40 px-6">
       <Link
@@ -28,4 +28,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default AsideHeader;

@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-const NavItems = () => {
+const AsideNavItems = () => {
   return (
     <>
       <Link
@@ -55,4 +55,4 @@ const NavItems = () => {
   );
 };
 
-export default NavItems;
+export default AsideNavItems;

@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../ui/button";
 import { PlusIcon } from "lucide-react";
+import TournamentDialog from "./TournamentDialog";
 
 const EmptyState = () => {
   return (
@@ -10,10 +11,12 @@ const EmptyState = () => {
         <p className="text-muted-foreground">
           Get started by creating a new tournament.
         </p>
-        <Button className="mt-4">
-          <PlusIcon className="h-4 w-4 mr-2" />
-          Create Tournament
-        </Button>
+        <TournamentDialog>
+          <Button className="mt-4">
+            <PlusIcon className="h-4 w-4 mr-2" />
+            Create Tournament
+          </Button>
+        </TournamentDialog>
       </div>
     </div>
   );

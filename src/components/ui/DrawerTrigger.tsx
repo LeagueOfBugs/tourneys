@@ -2,9 +2,9 @@ import React from "react";
 import { Sheet, SheetContent, SheetTrigger } from "./sheet";
 import { Button } from "./button";
 import { MenuIcon } from "lucide-react";
-import Aside from "../layout/aside/Aside";
-import Header from "../layout/aside/Header";
-import NavItems from "../layout/aside/NavItems";
+import Aside from "../aside/Aside";
+import Header from "../aside/AsideHeader";
+import NavItems from "../aside/AsideNavItems";
 
 const DrawerTrigger = () => {
   return (
