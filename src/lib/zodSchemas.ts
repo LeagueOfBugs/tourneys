@@ -1,8 +1,12 @@
 import { z } from 'zod';
 
 // League Schema
-export const tourneySchema = z.object({
-    name: z.string().min(2, {
-      message: "League name must be at least 2 characters.",
-    }),
-  });
+export const TournamentformSchema = z.object({
+  name: z.string(),
+  description: z.string(),
+  startDate: z.coerce.date().min(new Date()),
+  endDate: z.coerce.date().min(new Date()),
+  numberOfTeams: z.coerce.number(),
+  sport: z.string(),
+  tournamentType: z.string(),
+});

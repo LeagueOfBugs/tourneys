@@ -1,0 +1,34 @@
+{
+    "tournaments": [
+        {
+            "id": "1",
+            "name": "World Cup 2022",
+            "description": "The World Cup 2022 is the annual international football tournament of the FIFA organised by the International Football Association (FIFA). The tournament is held every four years and is the most prestigious football tournament in the world.",
+            "startDate": "2022-06-01",
+            "endDate": "2022-06-30",
+            "numberOfTeams": 32,
+            "sport": "Football",
+            "tournamentType": "Group Stage"
+        },
+        {
+            "id": "2",
+            "name": "World Cup 2026",
+            "description": "The World Cup 2026 is the annual international football tournament of the FIFA organised by the International Football Association (FIFA). The tournament is held every four years and is the most prestigious football tournament in the world.",
+            "startDate": "2026-06-01",
+            "endDate": "2026-06-30",
+            "numberOfTeams": 32,
+            "sport": "Football",
+            "tournamentType": "Group Stage"
+        },
+        {
+            "id": "3",
+            "name": "World Cup 2024",
+            "description": "The World Cup 2024 is the annual international football tournament of the FIFA organised by the International Football Association (FIFA). The tournament is held every four years and is the most prestigious football tournament in the world.",
+            "startDate": "2024-06-01",
+            "endDate": "2024-06-30",
+            "numberOfTeams": 32,
+            "sport": "Football",
+            "tournamentType": "Group Stage"
+        }
+    ]
+}
