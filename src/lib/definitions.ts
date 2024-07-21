@@ -1,5 +1,5 @@
 export type Tournament = {
-  id: string;
+  id?: string;
   name: string;
   description: string;
   startDate: Date;

@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { BellIcon, TrophyIcon } from "lucide-react";
 import DrawerTrigger from "@/components/ui/DrawerTrigger";
+import { ThemeToggle } from "../ui/ThemeToggle";
 
 const AsideHeader = () => {
   return (
@@ -20,6 +21,7 @@ const AsideHeader = () => {
           <BellIcon className="h-4 w-4" />
           <span className="sr-only">Notifications</span>
         </Button>
+        <ThemeToggle />
         <div className="sm:hidden">
           <DrawerTrigger />
         </div>
