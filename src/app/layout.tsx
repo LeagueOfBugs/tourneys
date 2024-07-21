@@ -3,7 +3,6 @@ import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Layout from "@/components/layout/Layout";
-import MainContainer from "@/components/MainContainer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,9 +27,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <Layout>
-            {children}
-        </Layout>
+        <Layout>{children}</Layout>
       </body>
     </html>
   );

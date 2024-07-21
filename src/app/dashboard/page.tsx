@@ -1,6 +1,6 @@
 import EmptyState from "@/components/tournament/EmptyState";
 import React from "react";
-import data from "@/constants/data.json";
+import data from "../../../constants/data.json";
 
 const Dashboard = () => {
   return (
