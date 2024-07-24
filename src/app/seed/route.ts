@@ -9,15 +9,14 @@ const seedTournaments = async () => {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 
-    // Create table if it doesn't exist
     await client.sql`
       CREATE TABLE IF NOT EXISTS tournament (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
         description TEXT NOT NULL,
-        start_date TEXT NOT NULL,
-        end_date TEXT NOT NULL,
-        number_of_teams TEXT NOT NULL,
+        start_date DATE NOT NULL,
+        end_date DATE NOT NULL,
+        number_of_teams INT NOT NULL,
         sport TEXT NOT NULL,
         tournament_type TEXT NOT NULL
       );
@@ -26,12 +25,17 @@ const seedTournaments = async () => {
       CREATE TABLE IF NOT EXISTS teams (
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
-        tournament_id UUID REFERENCES tournaments(id) ON DELETE CASCADE
       );
     `;
-
+    await client.sql`
+      CREATE TABLE IF NOT EXISTS tournament_teams (
+        tournament_id UUID REFERENCES tournament(id) ON DELETE CASCADE,
+        team_id UUID REFERENCES teams(id) ON DELETE CASCADE,
+        PRIMARY KEY (tournament_id, team_id)
+      );
+    `;
     // Insert seed data
-    const insertedTournaments = await Promise.all(
+    await Promise.all(
       tournaments.map((tournament) =>
         client.sql`
           INSERT INTO tournaments (name, description, start_date, end_date, number_of_teams, sport, tournament_type)
@@ -41,8 +45,6 @@ const seedTournaments = async () => {
       )
     );
     redirect('/dashboard');
-
-    console.log('Seed data inserted successfully:', insertedTournaments);
   } catch (error) {
     console.error('Error inserting seed data:', error);
   } finally {
