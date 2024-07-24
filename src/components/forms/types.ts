@@ -1,4 +1,4 @@
-import { FieldError, UseFormRegister } from "react-hook-form/dist/types";
+import { FieldError, UseFormRegister } from "react-hook-form";
 
 export type TournamentFormData = {
   id: string;

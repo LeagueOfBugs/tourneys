@@ -9,7 +9,7 @@ const AsideHeader = () => {
   return (
     <header className="flex h-[60px] items-center bg-muted/40 px-6">
       <Link
-        href="/dashboard"
+        href="/tournament"
         className="flex items-center gap-2 font-semibold"
         prefetch={false}
       >

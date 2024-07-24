@@ -1,6 +1,8 @@
 'use server';
 import { TournamentFormSchema } from '@/lib/zodSchemas';
 import { sql } from '@vercel/postgres';
+import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 
 
 interface AddTournamentResult{
@@ -26,7 +28,7 @@ const result = TournamentFormSchema.safeParse(tourneyObject);
       INSERT INTO tournament (name, description, start_date, end_date, number_of_teams, sport, tournament_type)
       VALUES (${tourneyObject.name}, ${tourneyObject.description}, ${tourneyObject.startDate}, ${tourneyObject.endDate}, ${tourneyObject.numberOfTeams}, ${tourneyObject.sport}, ${tourneyObject.tournamentType}) RETURNING *;
     `;
-
+revalidatePath('/tournament');
     return {
       data: insertResult,
       error: '',
@@ -36,7 +38,9 @@ const result = TournamentFormSchema.safeParse(tourneyObject);
       data: null,
       error: 'Error inserting data',
     };
-  }
+  } finally {
+    redirect('/tournament');
+}
 }
 
 export default addTournament

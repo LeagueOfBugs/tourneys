@@ -1,5 +1,6 @@
 import { db } from '@vercel/postgres';
 import data from '@/constants/data.json'
+import { redirect } from 'next/navigation';
 
 const seedTournaments = async () => {
   const client = await db.connect();
@@ -39,6 +40,7 @@ const seedTournaments = async () => {
         `
       )
     );
+    redirect('/dashboard');
 
     console.log('Seed data inserted successfully:', insertedTournaments);
   } catch (error) {
