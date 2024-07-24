@@ -1,9 +1,10 @@
-import React from 'react'
+import { getTournaments } from "@/lib/data";
+import React from "react";
 
-const TournamentPage = () => {
-  return (
-    <div>TournamentPage</div>
-  )
-}
+const TournamentPage = async () => {
+  const tournaments = await getTournaments();
+  console.log(tournaments);
+  return <div>TournamentPage</div>;
+};
 
-export default TournamentPage
+export default TournamentPage;

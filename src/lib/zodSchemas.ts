@@ -1,12 +1,12 @@
 import { z } from 'zod';
 
 // League Schema
-export const TournamentformSchema = z.object({
+export const TournamentFormSchema = z.object({
   name: z.string(),
   description: z.string(),
-  startDate: z.coerce.date().min(new Date()),
-  endDate: z.coerce.date().min(new Date()),
-  numberOfTeams: z.coerce.number(),
+  startDate: z.string(),
+  endDate: z.string(),
+  numberOfTeams: z.coerce.string(),
   sport: z.string(),
   tournamentType: z.string(),
 });

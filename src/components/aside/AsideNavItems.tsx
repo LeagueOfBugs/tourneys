@@ -7,8 +7,11 @@ import {
   UsersIcon,
 } from "lucide-react";
 import Link from "next/link";
+import { getTournaments } from "@/lib/data";
 
-const AsideNavItems = () => {
+const AsideNavItems = async () => {
+  const tournaments = await getTournaments();
+console.log('tournaments', tournaments)
   return (
     <>
       <Link
@@ -19,6 +22,17 @@ const AsideNavItems = () => {
         <PlusIcon className="h-4 w-4" />
         Create Tournament
       </Link>
+      {tournaments && tournaments.map((tournament) => (
+        <Link
+          key={tournament.id}
+          href={`/dashboard/tournament/${tournament.id}`}
+          className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+          prefetch={false}
+        >
+          <UsersIcon className="h-4 w-4" />
+          {tournament.name}
+        </Link>
+      ))}
       <Link
         href="#"
         className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"

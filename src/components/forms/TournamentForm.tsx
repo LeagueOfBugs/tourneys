@@ -7,6 +7,7 @@ import { z } from "zod";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -22,32 +23,29 @@ import {
 } from "@/components/ui/select";
 
 import { Input } from "@/components/ui/input";
-import { TournamentformSchema } from "@/lib/zodSchemas";
+import { TournamentFormSchema } from "@/lib/zodSchemas";
 import { Button } from "../ui/button";
+import addTournament from "@/actions/addTournament";
 
-type FormValues = z.infer<typeof TournamentformSchema>;
+type FormValues = z.infer<typeof TournamentFormSchema>;
 
 const TournamentForm = () => {
   const form = useForm<FormValues>({
-    resolver: zodResolver(TournamentformSchema),
+    resolver: zodResolver(TournamentFormSchema),
     defaultValues: {
-      name: "",
-      description: "",
-      startDate: new Date().toISOString().split("T")[0],
-      endDate: new Date().toISOString().split("T")[0],
-      numberOfTeams: 0,
-      sport: "",
-      tournamentType: "",
+      name: "a",
+      description: "a",
+      startDate: "2022-01-01",
+      endDate: "2022-01-01",
+      numberOfTeams: "10",
+      sport: "a",
+      tournamentType: "a",
     },
   });
 
-  const onSubmit = (values: FormValues) => {
-    console.log("Form Submitted:", values);
-  };
-
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form action={addTournament}>
         <FormField
           control={form.control}
           name="name"
@@ -129,31 +127,28 @@ const TournamentForm = () => {
         <FormField
           control={form.control}
           name="tournamentType"
-          render={() => (
+          render={({ field }) => (
             <FormItem>
               <FormLabel>Tournament Format</FormLabel>
-              <FormControl>
-                <Controller
-                  control={form.control}
-                  name="tournamentType"
-                  render={({ field }) => (
-                    <Select onValueChange={field.onChange} value={field.value}>
-                      <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Tournament Format" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Single Elimination">
-                          Single Elimination
-                        </SelectItem>
-                        <SelectItem value="Double Elimination">
-                          Double Elimination
-                        </SelectItem>
-                        <SelectItem value="Round Robin">Round Robin</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  )}
-                />
-              </FormControl>
+              <Select onValueChange={field.onChange} defaultValue={field.value} name="tournamentType">
+                <FormControl>
+                  <SelectTrigger className="w-[180px]">
+                    <SelectValue placeholder="Tournament Format" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Single Elimination">
+                    Single Elimination
+                  </SelectItem>
+                  <SelectItem value="Double Elimination">
+                    Double Elimination
+                  </SelectItem>
+                  <SelectItem value="Round Robin">Round Robin</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormDescription>
+                Select the format of the tournament
+              </FormDescription>
               <FormMessage />
             </FormItem>
           )}

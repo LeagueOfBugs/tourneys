@@ -8,3 +8,9 @@ export type Tournament = {
   sport: string; 
   tournamentType: string;
 }
+
+export type Team = {
+  id: string;
+  name: string;
+  tournamentId: string;
+}
