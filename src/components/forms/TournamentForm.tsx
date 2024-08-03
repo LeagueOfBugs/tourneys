@@ -32,15 +32,7 @@ type FormValues = z.infer<typeof TournamentFormSchema>;
 const TournamentForm = () => {
   const form = useForm<FormValues>({
     resolver: zodResolver(TournamentFormSchema),
-    defaultValues: {
-      name: "a",
-      description: "a",
-      startDate: "2022-01-01",
-      endDate: "2022-01-01",
-      numberOfTeams: "10",
-      sport: "a",
-      tournamentType: "a",
-    },
+    defaultValues: {},
   });
 
   return (

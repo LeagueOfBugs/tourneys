@@ -1,6 +1,4 @@
-import deleteTournament from "@/actions/deleteTournament";
 import EmptyState from "@/components/tournament/EmptyState";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -11,9 +9,10 @@ import { getTournaments } from "@/lib/data";
 import React from "react";
 
 const TournamentPage = async () => {
+
   const tournaments = await getTournaments();
+
   const renderEmtpyState = () => {
-    console.log("tournaments", Boolean(tournaments));
     if (!tournaments?.length) {
       return <EmptyState />;
     }
@@ -37,18 +36,18 @@ const TournamentPage = async () => {
               </p>
             </CardContent>
             <CardFooter>
-              <div className="mt-2 flex items-center gap-2">
+              {/* <div className="mt-2 flex items-center gap-2">
                 <span className="text-sm text-gray-500">Start Date:</span>
                 <span className="text-sm text-gray-900">
                   {tournament.start_date}
                 </span>
-              </div>
-              <div className="mt-2 flex items-center gap-2">
+              </div> */}
+              {/* <div className="mt-2 flex items-center gap-2">
                 <span className="text-sm text-gray-500">End Date:</span>
                 <span className="text-sm text-gray-900">
                   {tournament.end_date}
                 </span>
-              </div>
+              </div> */}
               <div className="mt-2 flex items-center gap-2">
                 <span className="text-sm text-gray-500">Number of Teams:</span>
                 <span className="text-sm text-gray-900">

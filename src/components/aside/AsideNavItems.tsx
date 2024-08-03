@@ -11,11 +11,12 @@ import { getTournaments } from "@/lib/data";
 
 const AsideNavItems = async () => {
   const tournaments = await getTournaments();
+  console.log(tournaments);
   const hasTournaments = tournaments && tournaments.length > 0;
   return (
     <>
       <Link
-d        href="/tournament/create"
+        href="/tournament/create"
         className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
         prefetch={false}
       >
