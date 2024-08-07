@@ -11,7 +11,6 @@ import { getTournaments } from "@/lib/data";
 
 const AsideNavItems = async () => {
   const tournaments = await getTournaments();
-  console.log(tournaments);
   const hasTournaments = tournaments && tournaments.length > 0;
   return (
     <>

@@ -1,11 +1,15 @@
 import deleteTournament from "@/actions/deleteTournament";
 import getTournament from "@/actions/getTournament";
+import DelBtn from "@/components/DelBtn";
 import { Button } from "@/components/ui/button";
 import React from "react";
-import { start } from "repl";
 
 const Tournament = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
+  const tourney = await getTournament(id);
+  if (tourney == null) {
+    return <p>Nothing here!</p>;
+  }
   const {
     name,
     description,
@@ -14,7 +18,7 @@ const Tournament = async ({ params }: { params: { id: string } }) => {
     number_of_teams,
     sport,
     tournament_type,
-  } = await getTournament(id);
+  } = tourney;
   const startDate = new Date(start_date);
   const localizedStartDate = startDate.toLocaleDateString();
   const endDate = new Date(end_date);
@@ -28,8 +32,8 @@ const Tournament = async ({ params }: { params: { id: string } }) => {
       <p>number_of_teams: {number_of_teams}</p>
       <p>sport: {sport}</p>
       <p>tournament_type: {tournament_type}</p>
-      {/* <Button onClick={() => deleteTournament(id)}>Delete</Button> */}
       <p>Tournament {id}</p>
+      <DelBtn id={id} />
     </div>
   );
 };

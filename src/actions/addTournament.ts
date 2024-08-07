@@ -1,14 +1,10 @@
 'use server';
 import { TournamentFormSchema } from '@/lib/zodSchemas';
 import { sql } from '@vercel/postgres';
-import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 
 
-interface AddTournamentResult{
-    data: typeof TournamentFormSchema;
-    error: string
-}
-async function addTournament(formData: FormData): Promise<AddTournamentResult>{
+async function addTournament(formData: FormData){
   // Convert FormData to an object
   const tourneyObject = {
     name: formData.get('name'),
@@ -23,39 +19,23 @@ async function addTournament(formData: FormData): Promise<AddTournamentResult>{
   const {success, data} = TournamentFormSchema.safeParse(tourneyObject);
 
   try {
-
     if(!success){
-          return {
-      data: null,
-      error: 'Invalid data',
-      };
+      throw new ErrorEvent('invalid cred')
     }
 
     const {name, description, startDate, endDate, numberOfTeams, sport, tournamentType} = data;
 
     const start_date = new Date(startDate).toLocaleString();
     const end_date = new Date(endDate).toLocaleString();
-    const insertResult = await sql`
+    await sql`
       INSERT INTO tournament (name, description, start_date, end_date, number_of_teams, sport, tournament_type)
-      VALUES (${name}, ${description}, ${start_date}, ${end_date}, ${numberOfTeams}, ${sport}, ${tournamentType}) RETURNING *;
+      VALUES (${name}, ${description}, ${start_date}, ${end_date}, ${numberOfTeams}, ${sport}, ${tournamentType});
     `;
 
-
-  revalidatePath('/');
-    return {
-      data: insertResult,
-      error: '',
-    };
   } catch (error) {
-
-    return {
-      data: null,
-      error: error,
-    };
+    console.log(error)
   } 
-//   finally {
-//     redirect('/tournament');
-// }
+    redirect('/tournament')
 }
 
 export default addTournament
